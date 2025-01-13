@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "87879732913",
+    "project_id": "versa-aa523",
+    "storage_bucket": "versa-aa523.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:87879732913:android:ba35623d9f2c3715ab1c90",
+        "android_client_info": {
+          "package_name": "com.example.versa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB49EvcOGn2pU_JkifKax7Ch-ybU4m0JSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
