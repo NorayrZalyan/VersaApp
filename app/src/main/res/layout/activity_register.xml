@@ -8,11 +8,11 @@
     tools:context=".RegisterActivity">
 
     <TextView
-        android:id="@+id/singupTv"
+        android:id="@+id/signupTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="300dp"
-        android:text="Sing up"
+        android:text="Sign up"
         android:textSize="35dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,7 +28,7 @@
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/singupTv" />
+        app:layout_constraintTop_toBottomOf="@id/signupTv" />
 
     <EditText
         android:id="@+id/passwordEt"
@@ -41,25 +41,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/emailEt" />
     <Button
-        android:id="@+id/singupBt"
+        android:id="@+id/signupBt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/passwordEt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="sing up"
+        android:text="Sign up"
         android:layout_marginTop="20dp"
         />
 
-    <TextView
-        android:id="@+id/go_to_login"
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Click to login"
-        android:textSize="15dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/singupBt" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signupBt"
+        android:layout_marginTop="20dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="572dp">
 
+        <TextView
+            android:id="@+id/No_accountTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Have an account?  "
+            android:textSize="20dp"
+            />
+        <TextView
+            android:id="@+id/go_to_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="login"
+            android:textSize="20dp"
+            android:textColor="@color/blue"
+            />
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,11 +2,13 @@ package com.example.versa;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -24,7 +26,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
     EditText email, password;
-    Button singup;
+    TextView go_to_login;
+    Button signup;
     FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +39,20 @@ public class RegisterActivity extends AppCompatActivity {
 
         email = findViewById(R.id.emailEt);
         password = findViewById(R.id.passwordEt);
-        singup = findViewById(R.id.singupBt);
+        signup = findViewById(R.id.signupBt);
+        go_to_login = findViewById(R.id.go_to_login);
 
-        singup.setOnClickListener(new View.OnClickListener() {
+
+
+        go_to_login.setOnClickListener(new        View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            }
+        });
+
+
+        signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String emailText = String.valueOf(email.getText());
@@ -55,6 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(RegisterActivity.this, "Authentication.",
                                             Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
