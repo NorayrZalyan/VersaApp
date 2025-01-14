@@ -25,10 +25,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
-    EditText email, password;
-    TextView go_to_login;
-    Button signup;
-    FirebaseAuth mAuth;
+    private EditText email, password;
+    private TextView go_to_login;
+    private Button signup;
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
