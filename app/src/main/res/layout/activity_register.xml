@@ -67,6 +67,17 @@
         android:layout_marginTop="20dp"
         android:background="@drawable/input"
         android:hint="Password"
+
+        android:singleLine="true"
+        android:ellipsize="none"
+        android:scrollHorizontally="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:inputType="text"
+        android:textColor="@color/white"
+
+
         android:textColorHint="@color/white"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,12 +92,52 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/input"
         android:hint="Email"
+
+
+        android:singleLine="true"
+        android:ellipsize="none"
+        android:scrollHorizontally="true"
+        android:marqueeRepeatLimit="marquee_forever"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:inputType="text"
+        android:textColor="@color/white"
+
         android:textColorHint="@color/white"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/signupTv" />
+
+    <LinearLayout
+        android:id="@+id/guest_login"
+        android:layout_width="238dp"
+        android:background="@color/button_color"
+        android:layout_height="40dp"
+        android:layout_marginTop="492dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_marginStart="34dp"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@drawable/guestlogin_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login as guest"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp" />
+
+
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

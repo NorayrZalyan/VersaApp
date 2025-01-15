@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="576dp"
         android:background="@drawable/input"
-        android:text="login"
+        android:text="Sign up"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"

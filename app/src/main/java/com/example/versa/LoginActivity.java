@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -28,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button login_Bt;
     private EditText emailTv, passwordTv;
 
-
+    private LinearLayout guest_login;
     private FirebaseAuth mAuth;
 
 
@@ -48,6 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         login_Bt = findViewById(R.id.loginBt);
         emailTv = findViewById(R.id.emailEt);
         passwordTv = findViewById(R.id.passwordEt);
+        guest_login = findViewById(R.id.guest_login);
 
         go_to_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(LoginActivity.this, "Authentication.",
                                             Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Toast.makeText(LoginActivity.this, "Authentication failed.",
@@ -82,7 +85,28 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        guest_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signInAnonymously()
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(LoginActivity.this, "Authentication.",
+                                            Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
 
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Toast.makeText(LoginActivity.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+            }
+        });
 
 
 

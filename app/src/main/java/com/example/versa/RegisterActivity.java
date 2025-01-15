@@ -8,11 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.annotation.ReplaceWith;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -29,6 +31,9 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView go_to_login;
     private Button signup;
     private FirebaseAuth mAuth;
+    private LinearLayout guest_login;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,9 +47,10 @@ public class RegisterActivity extends AppCompatActivity {
         signup = findViewById(R.id.signupBt);
         go_to_login = findViewById(R.id.go_to_login);
 
+        guest_login = findViewById(R.id.guest_login);
 
 
-        go_to_login.setOnClickListener(new        View.OnClickListener() {
+        go_to_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
@@ -69,7 +75,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(RegisterActivity.this, "Authentication.",
                                             Toast.LENGTH_SHORT).show();
-                                    startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                    startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -84,6 +90,34 @@ public class RegisterActivity extends AppCompatActivity {
 
             }
         });
-        
+
+
+
+
+        guest_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signInAnonymously()
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(RegisterActivity.this, "Authentication.",
+                                            Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
+
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Toast.makeText(RegisterActivity.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+                                    Log.w(TAG, "signInAnonymously:failure", task.getException());
+
+                                }
+                            }
+                        });
+
+            }
+        });
+
     }
 }

@@ -9,11 +9,16 @@ import android.widget.Button;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 
 public class MainActivity extends AppCompatActivity {
 
 
     private Button login_button, signup_butto;
+    private FirebaseAuth mAuth;
+
 
 
     @Override
@@ -24,8 +29,22 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            startActivity(new Intent(MainActivity.this, HomeActivity.class));
+
+        }
+
+
+
         login_button = findViewById(R.id.main_login_button);
         signup_butto = findViewById(R.id.main_signup_button);
+
+
+
+
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
